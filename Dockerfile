@@ -49,10 +49,11 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 #WORKDIR $GOPATH
 
-#RUN apt-get install mysql-server
-RUN apt-get install mysql-client
-
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin/kubectl
+
+#RUN apt-get install mysql-server
+RUN apt-get update
+RUN apt-get install mysql-client
