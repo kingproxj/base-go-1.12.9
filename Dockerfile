@@ -55,5 +55,5 @@ RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin/kubectl
 
 #RUN apt-get install mysql-server
-RUN apt-get update
+RUN apt-get update && apt-get upgrade
 RUN apt-get install mysql-client
