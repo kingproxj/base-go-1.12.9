@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		make \
 		pkg-config \
 		vim \
+		mysql-apt-config \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
