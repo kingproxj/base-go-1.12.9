@@ -56,6 +56,6 @@ RUN mv ./kubectl /usr/local/bin/kubectl
 
 #RUN apt-get install mysql-server
 RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
-RUN dpkg -i mysql-apt-config_0.8.10-1_all.deb # choose OK
-RUN apt-get update && apt-get upgrade
+RUN dpkg -i mysql-apt-config_0.8.10-1_all.deb
+RUN apt-get update
 RUN apt-get install mysql-client
