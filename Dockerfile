@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		vim \
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN apt-get install -y lsb-release
 RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
 RUN dpkg -i mysql-apt-config_0.8.10-1_all.deb
-RUN apt-get install lsb-release
 RUN apt-get install mysql-apt-config
 #RUN apt-get update
 RUN apt-get install mysql-client
