@@ -1,0 +1,4 @@
+deb http://repo.mysql.com/apt/ubuntu/ wily mysql-apt-config
+deb http://repo.mysql.com/apt/ubuntu/ wily mysql-5.7
+deb http://repo.mysql.com/apt//ubuntu/ wily mysql-tools
+deb-src http://repo.mysql.com/apt/ubuntu/ wily mysql-5.7
