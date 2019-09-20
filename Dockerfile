@@ -51,7 +51,7 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
 COPY mysql.list /etc/apt/sources.list.d/
 RUN cat /etc/apt/sources.list.d/mysql.list
-RUN apt-get install mysql-client
+RUN apt-get install -y --no-install-recommends mysql-client
 
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 
