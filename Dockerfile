@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install ca-certificates -y --no-install-recommends
 	&& apt-get install ca-certificates -y mysql-client \
 	&& curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
 	&& chmod +x ./kubectl \
-    && mv ./kubectl /usr/local/bin/kubectl
+    && mv ./kubectl /usr/local/bin/kubectl \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV GOLANG_VERSION 1.12.9
