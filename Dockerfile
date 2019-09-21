@@ -5,7 +5,7 @@ RUN apk update
 RUN apk add
 
 # gcc for cgo
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apk-install update && apk-install install -y --no-install-recommends \
 		g++ \
 		gcc \
 		libc6-dev \
