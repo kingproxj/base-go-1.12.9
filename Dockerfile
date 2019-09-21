@@ -1,8 +1,6 @@
 FROM debian:stretch-slim
 
 COPY mysql.list /etc/apt/sources.list.d/
-RUN apt-get update
-RUN apt-get install -y mysql-client
 
 # gcc for cgo
 RUN apt-get update && apt-get install ca-certificates -y --no-install-recommends \
@@ -14,6 +12,7 @@ RUN apt-get update && apt-get install ca-certificates -y --no-install-recommends
 		vim \
 		wget \
 		curl \
+	&& apt-get install mysql-client \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV GOLANG_VERSION 1.12.9
@@ -58,5 +57,5 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 
-RUN chmod +x ./kubectl
-RUN mv ./kubectl /usr/local/bin/kubectl
+RUN chmod +x ./kubectl \
+    && mv ./kubectl /usr/local/bin/kubectl
