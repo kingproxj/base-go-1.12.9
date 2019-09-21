@@ -1,17 +1,18 @@
-FROM gliderlabs/alpine:3.6
-RUN apk-install mysql-client
+FROM debian:stretch-slim
 
-RUN apk update
-RUN apk add
+COPY mysql.list /etc/apt/sources.list.d/
+RUN apt-get update
+RUN apt-get install -y mysql-client
 
 # gcc for cgo
-RUN apk-install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
 		g++ \
 		gcc \
 		libc6-dev \
 		make \
 		pkg-config \
 		vim \
+		wget \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV GOLANG_VERSION 1.12.9
