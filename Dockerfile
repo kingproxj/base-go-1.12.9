@@ -1,6 +1,8 @@
 FROM gliderlabs/alpine:3.6
 RUN apk-install mysql-client
 
+RUN apk add --update
+
 # gcc for cgo
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		g++ \
