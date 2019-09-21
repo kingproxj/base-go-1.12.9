@@ -12,7 +12,10 @@ RUN apt-get update && apt-get install ca-certificates -y --no-install-recommends
 		vim \
 		wget \
 		curl \
-	&& apt-get install mysql-client \
+	&& apt-get install ca-certificates -y mysql-client \
+	&& curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+	&& chmod +x ./kubectl \
+    && mv ./kubectl /usr/local/bin/kubectl
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV GOLANG_VERSION 1.12.9
@@ -54,8 +57,3 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 #WORKDIR $GOPATH
-
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-
-RUN chmod +x ./kubectl \
-    && mv ./kubectl /usr/local/bin/kubectl
