@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get install -y mysql-client
 
 # gcc for cgo
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install ca-certificates -y --no-install-recommends \
 		g++ \
 		gcc \
 		libc6-dev \
@@ -34,7 +34,7 @@ RUN set -eux; \
 	esac; \
 	\
 	url="https://golang.org/dl/go${GOLANG_VERSION}.${goRelArch}.tar.gz"; \
-	wget -O --no-check-certificate go.tgz "$url"; \
+	wget -O go.tgz "$url"; \
 	echo "${goRelSha256} *go.tgz" | sha256sum -c -; \
 	tar -C /usr/local -xzf go.tgz; \
 	rm go.tgz; \
