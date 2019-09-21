@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get install -y mysql-client
 
 # gcc for cgo
-RUN apt-get update && apt-get install -y --allow-unauthenticated --no-install-recommends \
+RUN apt-get update && apt-get install ca-certificates -y --no-install-recommends \
 		g++ \
 		gcc \
 		libc6-dev \
